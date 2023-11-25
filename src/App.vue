@@ -2,6 +2,7 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+    {{ sum }}
   </div>
 </template>
 
@@ -12,7 +13,15 @@ export default {
   name: 'App',
   components: {
     HelloWorld
-  }
+  },
+  data() {
+    return {
+      sum: 0
+    }
+  },
+  mounted() {
+      this.sum = this.$wasm.debug.add(1, 2)
+  },
 }
 </script>
 
